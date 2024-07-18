@@ -1,0 +1,126 @@
+
+.container {
+  padding-top: 6rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 4rem;
+
+}
+
+.mousemove {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  flex-grow: inherit;
+}
+
+.dices{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 4rem;
+}
+.dice {
+  display:flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+}
+
+body {
+  background-color: #111022;
+}
+
+
+h1 {
+  text-align: center;
+  line-height: 140px;
+  font-family: 'Lobster', cursive;
+  text-shadow: 5px 0 #dfa4d2;
+  font-size: 7rem;
+  color: #ff0062;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #8b8b8b;
+  font-family: 'helvetica','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#roll{
+  background-color: #ff0062;
+  border: none;
+  color: white;
+  font-family: helvetica', Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  width: 250px;
+  height: 60px;
+  border-radius: 50px;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#roll:hover {
+  background-color: #9e1f4f;
+  color: #b38d9b;
+  border: none;
+}
+
+
+#img1, #img2 {
+  margin-top: -60px;
+  width: 80%;
+  opacity: 1;
+  transition-duration: 0.4ms;
+}
+
+
+
+footer {
+  position: relative;
+  margin-top: 10%;
+  vertical-align: middle;
+  color: #555353;
+  text-align: center;
+  font-family: 'helvetica','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.eyes-wrap {
+  grid-column-gap: .75rem;
+  grid-row-gap: .75rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.eye {
+  background-color: #ffffff;
+  box-shadow: #3837385e 1px 1px 10px 1px;
+  border-radius: 100%;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 5.5rem;
+  display: flex;
+  overflow: hidden
+}
+
+.eye-pupil {
+  background-color: #000000;
+  border-radius: 100%;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  position: relative;
+  transition: transform 0.3s ease; 
+}
