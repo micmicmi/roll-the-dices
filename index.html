@@ -1,31 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">   
-  <title>Drum Kit </title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <title>Dicee</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
+
 </head>
 
 <body>
-  <div class="main content">
-    <h1>Drum <span class="Kit">Kit</span></h1>
-    <div class="drum-container">
-      <div class="drum w" data-key="w">w</div>
-      <div class="drum a" data-key="a">a</div>
-      <div class="drum s" data-key="s">s</div>
-      <div class="drum d" data-key="d">d</div>
-      <div class="drum j" data-key="j">j</div>
-      <div class="drum k" data-key="k">k</div>
-      <div class="drum l" data-key="l">l</div>
+<div class="container">
+    <div class="mousemove">
+      <h1 id="title">Have some Luck</h1>
+      <div class="eyes-wrap">
+        <div class="eye">
+          <div class="eye-pupil" id="left-pupil"></div>
+        </div>
+        <div class="eye">
+          <div class="eye-pupil" id="right-pupil"></div>
+        </div>
+      </div>
     </div>
-  </div>
-</body>
-  <script src="index.js" charset="utf-8"></script>
-  <footer>Made with ❤️ MMlab.</footer>
-</body>
+  <div id="diceContainer">
+      <div class="Player1">
+        <p>Player 1</p>
+        <div class="dice">
+          <img class="img1" src="./svg/dice 6.svg" />
+        </div>
+      </div>
+      <div class="Player2">
+        <p>Player 2</p>
+        <div class="dice">
+          <img class="img2" src="./svg/dice 6.svg" />
+        </div>
+      </div>
+</div>
 
+<button id="rollDiceBtn">Roll</button>
+
+<div class="preloader" id="preloader"></div>
+
+<script>
+      window.addEventListener("load", function () {
+        document.getElementById("preloader").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("preloader").style.display = "none";
+        }, 3000); // Adjust the timeout value to match the animation durations
+      });
+    </script>
+  </div>
+<footer>www 🎲 MMlab 🎲 com</footer>
+<script src="script.js"></script>
+<script>
+    document.addEventListener("mousemove", (event) => {
+      const { clientX, clientY } = event;
+      const eyesWrap = document.querySelector(".eyes-wrap");
+      const { left, top, width, height } = eyesWrap.getBoundingClientRect();
+      const centerX = left + width / 4;
+      const centerY = top + height / 4;
+      const angle = Math.atan2(clientY - centerY, clientX - centerX);
+      const distance = Math.min(
+        30,
+        Math.hypot(clientX - centerX, clientY - centerY)
+      );
+      const pupilX = Math.cos(angle) * distance;
+      const pupilY = Math.sin(angle) * distance;
+      document.getElementById(
+        "left-pupil"
+      ).style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+      document.getElementById(
+        "right-pupil"
+      ).style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+    });
+</script>
+</body>
 </html>
