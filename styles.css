@@ -33,16 +33,13 @@ body{
 }
 @keyframes rollDice {
   0% {
-    transform: scale(0.0) rotate(180deg);
-    opacity: 0%;
+  transform: scale(0.0) rotate(180deg);
+  opacity: 0%;
 }
-/* 50% { */
-    transform: scale(1) rotate(180deg);
-    opacity: 0%;
+  100% {
+  transform: scale(1) rotate(360deg);
+  opacity: 100%;
 }
-100% {
-    transform: scale(1) rotate(360deg);
-    opacity: 100%;
 }
 .container {
   padding-top: 6rem;
@@ -95,6 +92,7 @@ p {
   font-family: "helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
     sans-serif;
 }
+
 #rollDiceBtn {
   background-color: #ff0062;
   border: none;
@@ -112,6 +110,7 @@ p {
   transition-duration: 0.4s;
   cursor: pointer;
 }
+
 #rollDiceBtn:hover {
   background-color: #9e1f4f;
   color: #b38d9b;

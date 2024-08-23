@@ -63,3 +63,31 @@ rollDiceBtn.addEventListener('click', function() {
 
 
 
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; // Return an integer
+}
+
+// Add event listener to the button element
+var button = document.querySelector("#rollDiceBtn");
+var diceElements = document.querySelectorAll(`.dice`); // Assuming diceContainer is defined
+
+button.addEventListener("click", function () {
+  diceElements.forEach(dice => {
+    dice.classList.add(".roll-animation");
+    
+    // Generate a random duration between 1 and 3 seconds (inclusive)
+    const seconds = getRandomNumber(1, 3);
+    
+    // Set the animation style directly
+    dice.style.animation = `rollDice ${seconds}s forwards`;
+    
+    // Use a single animation end listener for each dice
+    const handleAnimationEnd = function () {
+      dice.style.animation = ''; // Reset animation
+      dice.classList.remove(`roll-animation`); // Optionally remove the class
+      dice.removeEventListener('animationend', handleAnimationEnd); // Clean up the listener
+    };
+    
+    dice.addEventListener('animationend', handleAnimationEnd, { once: true });
+  });
+});
