@@ -6,13 +6,11 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
-
 </head>
-
 <body>
 <div class="container">
     <div class="mousemove">
-      <h1 id="title">Have some Luck</h1>
+      <h1 id="title">Do you have <br>some Luck?</h1>
       <div class="eyes-wrap">
         <div class="eye">
           <div class="eye-pupil" id="left-pupil"></div>
@@ -23,24 +21,22 @@
       </div>
     </div>
   <div id="diceContainer">
-      <div class="Player1">
-        <p>Player 1</p>
-        <div class="dice">
-          <img class="img1" src="./svg/dice 6.svg" alt="Player 1's dice" />
-        </div>
+    <div class="Player1">
+      <p>Player 1</p>
+      <div class="dice">
+        <img class="img1" src="./svg/dice 6.svg" alt="Player 1's dice" />
+      </div> 
+    </div>
+    <div class="Player2">
+      <p>Player 2</p>
+      <div class="dice">
+        <img class="img2" src="./svg/dice 6.svg" alt="Player 2's dice" />
       </div>
-      <div class="Player2">
-        <p>Player 2</p>
-        <div class="dice">
-          <img class="img2" src="./svg/dice 6.svg" alt="Player 2's dice" />
-        </div>
-      </div>
+    </div>    
+  </div>    
+  <button id="rollDiceBtn">Roll</button>
 </div>
-
-<button id="rollDiceBtn">Roll</button>
-
 <div class="preloader" id="preloader"></div>
-
 <script>
       window.addEventListener("load", function () {
         document.getElementById("preloader").style.display = "block";
@@ -51,7 +47,8 @@
     </script>
   </div>
 <footer>www 🎲 MMlab 🎲 com</footer>
-<script src="script.js"></script>
+<!-- JS File -->
+<script src= "./script.js" ></script>
 <script>
     document.addEventListener("mousemove", (event) => {
       const { clientX, clientY } = event;

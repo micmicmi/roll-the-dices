@@ -1,7 +1,9 @@
 body{
+  flex: auto;
   cursor:pointer;
-  background-color: #111022;
+  background-color: #090825;
 }
+
 .preloader {
   position: fixed;
   top: 0;
@@ -10,95 +12,32 @@ body{
   height: 100vh;
   background-color: rgb(223, 21, 105);
   animation: slideUp 1s forwards;
-  z-index: 0;
-  display: none;
+  display: none; /* Removed z-index: 0; */
 }
-
-@keyframes slideUp {
-  100% {
-    height: 0vh;
-    opacity: 1;
-    /* Start with 100% opacity */
-  }
-
-  0% {
-    height: 100vh;
-    opacity: 1;
-    /* End with 0% opacity */
-  }
-}
-
-.roll-animation {
-  animation: rollDice 1s forwards;
-}
-@keyframes rollDice {
-  0% {
-  transform: scale(0.0) rotate(180deg);
-  opacity: 0%;
-}
-  100% {
-  transform: scale(1) rotate(360deg);
-  opacity: 100%;
-}
-}
-.container {
-  padding-top: 6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4rem;
-
-}
-.mousemove {
-  display: flex;
-  flex-direction: column-reverse;
-  flex-wrap: wrap;
-  flex-grow: inherit;
-}
-#diceContainer {
-  margin-top: -40px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  gap: 6rem;
-}
-.Player1 {
-  text-align: center;
-}
-.Player2 {
-  text-align: center;
-}
-.dice {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
 
 h1 {
   text-align: center;
-  line-height: 140px;
+  line-height: 6.25rem;
   font-family: "Lobster", cursive;
   text-shadow: 5px 0 #dfa4d2;
-  font-size: 7rem;
+  font-size: 6rem;
   color: #ff0062;
   margin-top: 20px;
+}
+.img1, .img2{
+  width: 90%;
 }
 p {
   font-size: 1.2rem;
   color: #8b8b8b;
-  font-family: "helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-    sans-serif;
+  font-family: "Helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 #rollDiceBtn {
   background-color: #ff0062;
   border: none;
   color: white;
-  font-family: helvetica ", Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-    sans-serif;
+  font-family: "Helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Consolidated font-family */
   font-size: 20px;
   width: 250px;
   height: 60px;
@@ -109,22 +48,26 @@ p {
   display: inline-block;
   transition-duration: 0.4s;
   cursor: pointer;
+  margin-top: 5rem;
+  box-shadow: 1px 2px 20px 2px #ff50936e;
 }
 
 #rollDiceBtn:hover {
   background-color: #9e1f4f;
   color: #b38d9b;
-  border: none;
 }
+
+
+
 footer {
   position: relative;
   margin-top: 10%;
   vertical-align: middle;
   color: #555353;
   text-align: center;
-  font-family: "helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-    sans-serif;
+  font-family: "Helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Consolidated font-family */
 }
+
 .eyes-wrap {
   grid-column-gap: 0.75rem;
   grid-row-gap: 0.75rem;
@@ -133,12 +76,10 @@ footer {
   display: flex;
   gap: 1rem;
 }
+
 .eye {
   background-color: #ffffff;
   border-radius: 100%;
-  flex: none;
-  justify-content: center;
-  align-items: center;
   width: 8rem;
   height: 5.5rem;
   display: flex;
@@ -147,33 +88,105 @@ footer {
 .eye-pupil {
   background-color: #000000;
   border-radius: 100%;
-  flex: none;
   width: 2.25rem;
   height: 2.25rem;
   position: relative;
   transition: transform 0.3s ease;
 }
+
+@keyframes slideUp {
+  100% {
+    height: 0;
+    opacity: 1; /* Start with 100% opacity */
+  }
+  0% {
+    height: 100vh;
+    opacity: 1; /* End with 0% opacity */
+  }
+}
+
+.roll-animation {
+  animation: rollDice 0.5s forwards;
+}
+@keyframes rollDice {
+  0% {
+    transform: scale(0.0) rotate(180deg);
+    opacity: 0%;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 100%;
+  }
+}
+
+.show-result {
+  animation: show-result-animation ms ease-in-out;
+}
+
+@keyframes show-result-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  margin: 4rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mousemove {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  flex-grow: inherit;
+}
+
+#diceContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 6rem;
+}
+
+.Player1 {
+  text-align: center;
+}
+
+.Player2 {
+  text-align: center;
+}
+
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (min-width: 100px) and (max-width: 750px) {
+@media only screen and (max-width: 750px) {
+  body {
+    cursor: none;
+  }
+  .container{
+    justify-content: center;
+    align-items: center;
+  } ;
   h1 {
-      font-size: 5rem;
-      line-height: 5rem;
+    font-size: 4rem; /* Adjusted for better readability */
+    line-height: 4.5rem; /* Adjusted for better readability */
   }
-  #diceContainer{
-      margin-top: -50px;
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-    }
-  .img1,.img2 {
-    width: 65%;
+  .img1, .img2 {
+    width: 85%;
   }
-  .eye{
+  .eye {
     width: 5rem;
     height: 3.5rem;
   }
   .eye-pupil {
-    width: 1.55rem;
-    height: 1.55rem;
+    width: 1.5rem; /* Adjusted for better scaling */
+    height: 1.5rem; /* Adjusted for better scaling */
   }
 }
