@@ -15,7 +15,7 @@ body{
   display: none; /* Removed z-index: 0; */
 }
 
-h1 {
+.title {
   text-align: center;
   line-height: 6.25rem;
   font-family: "Lobster", cursive;
@@ -167,26 +167,35 @@ footer {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 750px) {
-  body {
-    cursor: none;
-  }
-  .container{
-    justify-content: center;
-    align-items: center;
-  } ;
-  h1 {
-    font-size: 4rem; /* Adjusted for better readability */
-    line-height: 4.5rem; /* Adjusted for better readability */
-  }
-  .img1, .img2 {
-    width: 85%;
-  }
-  .eye {
-    width: 5rem;
-    height: 3.5rem;
-  }
-  .eye-pupil {
-    width: 1.5rem; /* Adjusted for better scaling */
-    height: 1.5rem; /* Adjusted for better scaling */
-  }
+body {
+cursor: none;
+}
+.container{
+justify-content: center;
+  align-items: center;
+}
+.title {
+font-size: 4rem;/* Adjusted for better readability */
+line-height: 4.5rem;
+}
+.img1, .img2 {
+width: 85%;
+}
+.eye {
+width: 5rem;
+height: 3.5rem;
+}
+.eye-pupil {
+width: 1.5rem; /* Adjusted for better scaling */
+height: 1.5rem; /* Adjusted for better scaling */
+}
+#diceContainer {
+  display: flex;
+  justify-items: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  margin-top: -20px;
+}
+
 }

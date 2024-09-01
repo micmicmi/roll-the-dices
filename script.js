@@ -45,7 +45,7 @@ function displayRandomDiceImages() {
               // Reset the h1 text after a delay (adjust as needed)
               setTimeout(() => {
                 h1.classList.remove("show-result");
-                h1.textContent = "Give it another try";
+                h1.textContent = "Do you have some Luck?";
               }, 2000);
             }
           }, { loop: true });
