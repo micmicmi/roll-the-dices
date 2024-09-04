@@ -50,26 +50,46 @@
 <!-- JS File -->
 <script src= "./script.js" ></script>
 <script>
-    document.addEventListener("mousemove", (event) => {
-      const { clientX, clientY } = event;
-      const eyesWrap = document.querySelector(".eyes-wrap");
-      const { left, top, width, height } = eyesWrap.getBoundingClientRect();
-      const centerX = left + width / 4;
-      const centerY = top + height / 4;
-      const angle = Math.atan2(clientY - centerY, clientX - centerX);
-      const distance = Math.min(
-        30,
-        Math.hypot(clientX - centerX, clientY - centerY)
-      );
-      const pupilX = Math.cos(angle) * distance;
-      const pupilY = Math.sin(angle) * distance;
-      document.getElementById(
-        "left-pupil"
-      ).style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-      document.getElementById(
-        "right-pupil"
-      ).style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-    });
+const eyesWrap = document.querySelector(".eyes-wrap");
+const leftPupil = document.getElementById("left-pupil");
+const rightPupil = document.getElementById("right-pupil");
+
+// Shift factors
+const rightShiftFactorBase = 1.6; // Define base shift factor
+// const leftShiftFactor = -0.1; // Shift factor for left movement
+
+// Check screen size
+const isMobile = window.innerWidth <= 768;
+const rightShiftFactor = isMobile ? rightShiftFactorBase * 0.2 : rightShiftFactorBase;
+
+// Cache dimensions and position of eyesWrap
+let containerBounds = eyesWrap.getBoundingClientRect();
+
+document.addEventListener("mousemove", (event) => {
+  const { clientX, clientY } = event;
+  const { left, top, width, height } = containerBounds;
+  const centerX = left + width / 2;
+  const centerY = top + height / 2;
+
+  // Calculate angle and distance
+  const angle = Math.atan2(clientY - centerY, clientX - centerX);
+  const distance = Math.min(40, Math.hypot(clientX - centerX, clientY - centerY));
+
+  // Calculate new position for pupils
+  const newLeft = centerX + distance * Math.cos(angle) + (angle > 0 ? distance * rightShiftFactor : distance * leftShiftFactor);
+  const newTop = centerY + distance * Math.sin(angle);
+
+  // Limit the new positions to the container bounds
+  const limitedLeft = Math.max(left, Math.min(newLeft, left + width));
+  const limitedTop = Math.max(top, Math.min(newTop, top + height));
+
+  // Update pupils' positions
+  leftPupil.style.transform = `translate(${limitedLeft - centerX}px, ${limitedTop - centerY}px)`;
+  rightPupil.style.transform = `translate(${limitedLeft - centerX}px, ${limitedTop - centerY}px)`;
+});
+
+// Update container bounds on window resize
+window.addEventListener('resize', () => {
+  containerBounds = eyesWrap.getBoundingClientRect();
+});
 </script>
-</body>
-</html>

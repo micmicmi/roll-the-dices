@@ -68,6 +68,7 @@ footer {
   font-family: "Helvetica", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Consolidated font-family */
 }
 
+
 .eyes-wrap {
   grid-column-gap: 0.75rem;
   grid-row-gap: 0.75rem;
@@ -81,15 +82,15 @@ footer {
   background-color: #ffffff;
   border-radius: 100%;
   width: 8rem;
-  height: 5.5rem;
+  height: 4.5rem;
   display: flex;
   overflow: hidden;
 }
 .eye-pupil {
   background-color: #000000;
   border-radius: 100%;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   position: relative;
   transition: transform 0.3s ease;
 }
@@ -183,7 +184,7 @@ width: 85%;
 }
 .eye {
 width: 5rem;
-height: 3.5rem;
+height: 2.8rem;
 }
 .eye-pupil {
 width: 1.5rem; /* Adjusted for better scaling */
